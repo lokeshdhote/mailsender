@@ -100,7 +100,7 @@ router.post('/sendmail', CatchAsyncErrors(async (req, res, next) => {
   const url = `http://papapet.in/papapet/auth/forgotpassword/${resetToken}`;
   await sendMailUtility(req.body.email, url);
 
-  res.status(200).json({ message: "Password reset link sent", resetUrl: url });
+  res.status(200).json({ message: "Password reset link sent"});
 }));
 
 // 2️⃣ Change Password via Token
@@ -149,7 +149,7 @@ router.post('/reset/password', isAuthenticated, CatchAsyncErrors(async (req, res
 router.post('/test-email', CatchAsyncErrors(async (req, res) => {
   const { email } = req.body;
   await sendMailUtility(email, 'https://papapet.in/');
-  res.status(200).json({ success: true, message: "Test email sent successfully" });
+  // res.status(200).json({ success: true, message: "Test email sent successfully" });
 }));
 
 module.exports = router;
